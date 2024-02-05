@@ -1,0 +1,21 @@
+<% @categories.each do |category| %>
+  <div class="px-3 py-3 mb-3 bg-body border border-2 border-light-subtle">
+    <%= link_to user_category_path(current_user, category), class: "text-decoration-none" do %>
+      <div class="d-flex align-items-center justify-content-between gap-3">
+        <%= image_tag category.icon, alt: "category_icon", class:"category-icon" %>
+
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="title mb-0"><%= category.name %></h5>
+            <span class="category-amount fw-bold"><%= number_to_currency(category.expenses.sum(&:amount)) %></span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="date fs-6"><%= category.created_at.strftime('%d %b %Y') %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= button_to "Delete", user_category_path(current_user, category), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn delete-btn p-0 border-0 bg-transparent btn-link link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+  </div>
+<% end %>
