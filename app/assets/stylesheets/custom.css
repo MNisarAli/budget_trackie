@@ -41,8 +41,8 @@ a {
   padding: 1rem;
   background: #fff;
   gap: 0.5rem;
-  border-top: 2px solid #d0cfcf85;
-  border-bottom: 2px solid #d0cfcf85;
+  border-top: 2px solid #d0cfcf47;
+  border-bottom: 2px solid #d0cfcf47;
 }
 
 .form_group {
@@ -131,4 +131,12 @@ a {
 
 .new-category-btn {
   padding: 0.75rem 5.2rem;
+}
+
+.bi-arrow-left {
+  font-size: 1.8rem;
+}
+
+.category-icon {
+  max-width: 3rem;
 }
