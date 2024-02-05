@@ -10,7 +10,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-body-tertiary">
+    <main>
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
