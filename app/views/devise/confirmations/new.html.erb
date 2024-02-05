@@ -1,16 +1,17 @@
-<h2>Resend confirmation instructions</h2>
+ <section class="confirmation_form">
+  <nav class="nav-header w-100 p-3 co">
+    <h1 class="text-uppercase text-center fs-5 mx-0 mt-4 mb-0">Confirmation instructions</h1>
+  </nav>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form_container" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+    <div class="form_group">
+      <%= f.label :email, class: "form_label" %>
+      <%= f.email_field :email, class: "form_input", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <%= f.submit "Resend confirmation instructions", class: "btn my-3" %>
+    <%= render "devise/shared/links" %>
+  <% end %>
+</section>
