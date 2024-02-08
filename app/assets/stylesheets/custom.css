@@ -38,7 +38,7 @@ a {
   display: flex;
   flex-direction: column;
   margin: 1.3rem 0;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   background: #fff;
   gap: 0.5rem;
   border-top: 2px solid #d0cfcf47;
@@ -56,12 +56,12 @@ a {
 
 .form_input {
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: none;
+  border-bottom: 2px solid #d0cfcf47;
 }
 
 .form_input:focus {
   outline: none;
-  border-color: #213535;
 }
 
 .btn {
