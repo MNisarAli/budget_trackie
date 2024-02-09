@@ -1,0 +1,25 @@
+<section>
+  <nav class="sticky-top nav-header px-1 pb-2 pt-4">
+    <div class=" m-auto row align-items-end mt-1">
+      <%= link_to user_categories_path, class:"text-white btn-back col" do %>
+        <i class="bi bi-arrow-left"></i>
+      <% end %>
+      <h1 class="text-uppercase text-center fs-5 col-7 ">New Category</h1>
+      <i class="bi bi-qr-code-scan mb-1 pb-1 col text-end"></i>
+    </div>
+  </nav>
+
+  <%= form_with model: @category, url: user_categories_path(current_user), scope: :category, class: "form_container gap-0" do |f| %>
+    <div class="input-group py-2 mb-3">
+      <%= f.label :name, class: "input-group-text" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+
+    <div class="input-group py-2 mb-3">
+      <%= f.label :icon, class: "input-group-text" %>
+      <%= f.text_field :icon, autocomplete: "icon", class: "form-control" %>
+    </div>
+
+    <%= f.submit "Add Category", class: "btn my-2" %>
+  <% end %>
+</section>

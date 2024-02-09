@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BudgetTrackie</title>
+    <title>Budget Trackie</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-body-tertiary">
+    <main>
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,0 +1,40 @@
+<section>
+  <nav class="sticky-top nav-header px-1 pb-2 pt-4">
+    <div class=" m-auto row align-items-end mt-1">
+      <%= link_to user_category_path(current_user, @category), class:"text-white btn-back col" do %>
+        <i class="bi bi-arrow-left"></i>
+      <% end %>
+      <h1 class="text-uppercase text-center fs-5 col-7 ">New Expense</h1>
+      <i class="bi bi-qr-code-scan mb-1 pb-1 col text-end"></i>
+    </div>
+  </nav>
+
+  <%= form_with model: @expense, url: user_category_expenses_path(current_user, @category), method: :post, scope: :expense, class: 'form_container gap-0' do |f| %>
+
+    <div class="input-group py-2 mb-3">
+      <%= f.label :name, class: "input-group-text" %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+    </div>
+
+    <div class="input-group py-2 mb-3">
+      <%= f.label :amount, class: "input-group-text" %><br />
+      <%= f.number_field :amount, class: 'form-control' %>
+    </div>
+
+    <div class="input-group py-2 mb-3">
+      <span class="input-group-text"> Categories </span>
+      <div class='form-control'>
+        <% current_user.categories.each do |category| %>
+          <div class="form-check">
+            <%= check_box_tag "expense[category_ids][]", category.id, false, class: 'form-check-input', id: "category_#{category.id}" %>
+            <label class="form-check-label" for="category_<%= category.id %>">
+              <%= category.name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= f.submit "Add Expense", class: 'btn my-2' %>
+  <% end %>
+</section>
